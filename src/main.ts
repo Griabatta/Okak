@@ -2,11 +2,22 @@
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { createSuperUser } from './scripts/createSuperUser';
+import * as cookieParser from 'cookie-parser';
+import { AllExceptionsFilter } from './filters/all-exceptions.filter';
 
 async function bootstrap() {
-  await createSuperUser(); // Создаем админа перед запуском приложения
-  
   const app = await NestFactory.create(AppModule);
-  await app.listen(3000);
+  app.enableCors({
+    origin: 'http://localhost:3000', 
+    credentials: true, 
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'], 
+  });
+  app.useGlobalFilters(new AllExceptionsFilter());
+  
+  app.use(cookieParser());
+  
+  await createSuperUser();
+  
+  await app.listen(3001);
 }
 bootstrap();
