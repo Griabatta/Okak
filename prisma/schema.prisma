@@ -1,0 +1,91 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+  // output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model EducationalInstitution {
+  id          Int       @id @default(autoincrement())
+  name        String
+  description String?
+  groups      Group[]
+  users       User[]
+  schedules   Schedule[]
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+}
+
+model Schedule {
+  id          Int       @id @default(autoincrement())
+  institution EducationalInstitution @relation(fields: [institutionId], references: [id])
+  institutionId Int
+  subject     String
+  teacher     String
+  classroom   String
+  startTime   DateTime
+  endTime     DateTime
+  orderNumber Int
+  parity      Parity
+  groups      GroupSchedule[]
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+}
+
+model Group {
+  id          Int       @id @default(autoincrement())
+  name        String
+  class       Int
+  institution EducationalInstitution @relation(fields: [institutionId], references: [id])
+  institutionId Int
+  students    User[]
+  schedules   GroupSchedule[]
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+}
+
+model GroupSchedule {
+  group     Group    @relation(fields: [groupId], references: [id])
+  groupId   Int
+  schedule  Schedule @relation(fields: [scheduleId], references: [id])
+  scheduleId Int
+
+  @@id([groupId, scheduleId])
+}
+
+enum UserRole {
+  STUDENT
+  GROUP_LEADER
+  TEACHER
+  ADMIN
+}
+
+model User {
+  id          Int       @id @default(autoincrement())
+  email       String    @unique
+  password    String
+  firstName   String
+  lastName    String
+  role        UserRole  @default(STUDENT)
+  group       Group?    @relation(fields: [groupId], references: [id])
+  groupId     Int?
+  institution EducationalInstitution @relation(fields: [institutionId], references: [id])
+  institutionId Int
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+}
+
+enum Parity {
+  EVEN    // Четная неделя
+  ODD     // Нечетная неделя
+  BOTH    // Для занятий, которые идут на обеих неделях
+}
