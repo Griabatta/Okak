@@ -1,14 +1,31 @@
-import { observer } from "mobx-react-lite";
-import Link from "next/link";
+import { useAuth } from '@/providers/AuthProvider';
+import Link from 'next/link';
 
+export default function Header() {
+  const { user, isLoading }: any = useAuth(); // Получаем состояние загрузки
 
-const Header = () => {
+  // Пока данные загружаются
+  if (isLoading) {
     return (
-       <div className="header">
-            <Link href={"/login"}>Регистрация</Link>
-            <Link href={"/signup"}>Авторизация</Link>
-       </div>
-    )
-}
+      <div className="header">
+        <div>Загрузка...</div>
+      </div>
+    );
+  }
 
-export default Header;
+  // После загрузки
+  return (
+    <div className="header">
+      {!user ? (
+        <Link href="/login">Авторизация</Link>
+      ) : (
+        <>
+          <button>{user.email}</button>
+          {(user.role === "TEACHER" || user.role === "ADMIN") && (
+            <Link href="/setting">Настройки</Link>
+          )}
+        </>
+      )}
+    </div>
+  );
+}
