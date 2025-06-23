@@ -1,8 +1,11 @@
-// app/login/page.tsx
 "use client";
 
-import { useRouter } from "next/navigation";
+import Header from "@/components/Header";
+import Link from "next/link";
+import { useRouter } from "next/navigation"; // Изменённый импорт
 import { useState } from "react";
+import '../global.css';
+import './style/login.css';
 
 export default function LoginPage() {
   const [email, setEmail] = useState("");
@@ -16,27 +19,44 @@ export default function LoginPage() {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ email, password }),
-      credentials: "include", // Важно для кук!
+      credentials: "include",
     });
 
     if (res.ok) {
-      router.push("/schedule"); 
+      router.push("/");
+      location.reload();      
     }
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <input
-        type="email"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-      />
-      <input
-        type="password"
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
-      />
-      <button type="submit">Войти</button>
-    </form>
+    <>
+    <Header/>
+      <div className="login">
+        <form onSubmit={handleSubmit} className="login__form">
+          <div className="login__input">
+            <label htmlFor="emailUser">Почта:</label>
+            <input
+              name="emailUser"
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+          </div>
+          <div className="login__input">
+            <label htmlFor="passwordUser">Пароль:</label>
+            <input
+              name="passwordUser"
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+          </div>
+          <div className="login__action">
+            <button type="submit" className="login__submit">Войти</button>
+            <p>Нет аккаунта? <Link href="/signup">Регистрация.</Link></p>
+          </div>
+        </form>
+      </div>
+    </>
   );
 }

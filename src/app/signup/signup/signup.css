@@ -1,0 +1,80 @@
+.signup {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+.signup__container {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    padding: 10px;
+    border: 1px solid #3c6d00;
+    background-color: #3c6d00;
+    border-radius: 7px;
+    input {
+        padding: 5px;
+        border: 1px solid #3c6d00;
+        border-radius: 7px;
+        color: #3c6d00;
+        background-color: #bfee85;
+        font-size: 20px
+    };
+    select {
+        padding: 5px;
+        border: 1px solid #3c6d00;
+        border-radius: 7px;
+        color: #3c6d00;
+        background-color: #bfee85;
+        font-size: 20px
+    };
+    label {
+        margin-top: 5px;
+        color: #bfee85;
+        font-size: 20px;
+    }
+
+}
+.sugnup__token {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    justify-content: center;
+}
+
+.token__check {
+    display: flex;
+    flex-direction: row;
+    align-items: end;
+    accent-color: #3c6d00;
+    
+}
+
+.sugnup__action {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    color: white;
+}
+
+.signup__button {
+    border: none;
+    border-radius: 7px;
+    padding: 10px;
+    color: #3c6d00;
+    background-color: #bfee85;
+    font-family: Head, sans-serif;
+    font-size: 25px;
+}
+
+.signup__link {
+    /* text-decoration: none; */
+    color: #bfee85;
+    font-size: 25px;
+}

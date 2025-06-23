@@ -1,0 +1,164 @@
+.schedule {
+    display: flex;
+    width: 90%;
+    height: 100%;
+    flex-direction: column;
+    align-items: center;
+}
+
+.schedule__container {
+    display: flex;
+    flex-direction: row;
+    flex: 1;
+}
+
+.schedule__days {
+    display: flex;
+    flex-direction: column;
+    min-width: 305px;
+    width: auto;
+    flex-wrap: wrap;
+    align-items: center;
+    
+    
+    
+    
+
+}
+
+.schedule_group {
+    display: flex;
+    flex-direction: column;
+}
+
+.schedule__byGroup {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.lesson {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    padding: 0;
+    border: 0;
+    margin: 2px;
+}
+
+.lesson empty {
+    width: 100%;
+}
+
+.schedule__column-items {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.schedule__item {
+    display: flex;
+    border: 1px solid black;
+    border-radius: 7px;
+    width: 100%;
+
+}
+
+.schedule__item:hover {
+    background-color: #bfee85b7;
+}
+
+.schedule__info {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+    padding: 7px;
+    user-select: none;
+
+    
+}
+
+.schedule__tc {
+    display:  flex;
+    flex-direction: row;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    justify-content: space-between;
+    user-select: none;
+}
+
+.schedule__subject {
+    display: flex;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    justify-content: center;
+    user-select: none;
+    
+}
+
+.schedule__lesson-index {
+    display: flex;
+    padding: 7px;
+    justify-content: center;
+    align-items: center;    
+    width: 10%;
+}
+
+.schedule__time {
+    display: flex;
+    padding: 7px;
+    justify-content: center;
+    align-items: center;
+    width: 30%;
+}
+
+
+.schedule__add-schedule {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    /* padding: 10px; */
+    flex: 1
+}
+
+.schedule__add-button {
+    /* padding: 7px; */
+    border: 1px solid transparent;
+    border-radius: 7px;
+    width: 100%;
+    height: 5vh;
+    background-color: #3c6d00;
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+    color: #bfee85;
+    font-weight: 600;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    border: 1px solid transparent;
+}
+
+.schedule__add-button:hover {
+    background-color: #bfee85;
+    color: #3c6d00;
+    transition: 0.3s ease-in-out;
+    border: 1px solid #3c6d00;
+}
+
+@media (max-width: 640px) {
+    .schedule__days {
+        width: 100%;
+        align-items: center;
+        min-width: none;
+
+    }
+}
+
+/* @media (max-width) */

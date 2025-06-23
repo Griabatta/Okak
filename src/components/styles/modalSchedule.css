@@ -1,0 +1,116 @@
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0,0,0,0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+
+}
+
+.modal-content {
+  background: #bfee85;
+  padding: 20px;
+  border-radius: 7px;
+  width: 50%;
+  max-width: 90%;
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group {
+  /* border: 1px solid #ddd; */
+  padding: 10px;
+  margin: 5px 0;
+  cursor: pointer;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  select {
+    padding: 5px;
+    border: 0.5px solid #3c6d00;
+    border-radius: 7px;
+    margin: 7px;
+    width: auto;
+    background-color: #447804;
+    color: #bfee85;
+    width: 100%;
+  }
+  .form-group__isCombined {
+    accent-color: #3c6d00;
+    width: fit-content;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 25px;
+    height: 20px;
+    border-radius: 7px;
+  }
+}
+
+.form-group.gap {
+  min-height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.bg-yellow-100 {
+  background-color: #fef9c3;
+}
+
+.bg-red-100 {
+  background-color: #fee2e2;
+}
+
+.empty-slot {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-actions {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.modal-actions--accept {
+  border-radius: 7px;
+  padding: 15px;
+  cursor: pointer;
+  border: 1px solid #3c6d00;
+  background-color: #bfee85;
+  color: #3c6d00;
+  transition: 0.3s;
+  
+}
+
+.modal-actions--accept:hover {
+  background-color: #3c6d00;
+  color: #bfee85;
+  transition: 0.3s;
+}
+
+.modal-actions--close {
+  border-radius: 7px;
+  padding: 15px;
+  cursor: pointer;
+  border: 1px solid #6d0000;
+  background-color: #ee8585;
+  color: #6d0000;
+  transition: 0.3s;
+}
+
+.modal-actions--close:hover {
+  background-color: #6d0000;
+  color: #ee8585;
+  transition: 0.3s;
+}

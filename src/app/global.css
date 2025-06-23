@@ -1,0 +1,16 @@
+
+@font-face {
+    font-family: Head;
+    src: url('../app/fonts/WDXLLubrifontSC-Regular.ttf');
+}
+
+h1,h2,h3,h4 {
+    font-family: 'Head', 'sans-serif';
+    font-weight: 600;
+}
+
+html,body {
+    margin: 0;
+    padding: 0;
+    background-color: #bfee85;
+}
